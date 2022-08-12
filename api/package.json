@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "formidable": "^2.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.4",
+    "mysql": "^2.18.1"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "build": "npm build",
+    "test": "npm test",
+    "eject": "npm eject"
+  }
+}
