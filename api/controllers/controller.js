@@ -65,15 +65,15 @@ exports.validateToken = (req, res, next) => {
     try {
         let jwtSecretKey = process.env.JWT_SECRET_KEY;
         const decoded = jwt.verify(token, jwtSecretKey);
-        diff = (new Date().getTime() - new Date(decoded.time).getTime())/1000
-        if(diff > parseInt(process.env.TOKEN_EXPIRE)/2 && diff < process.env.TOKEN_EXPIRE) {
+        diff = (new Date().getTime() - new Date(decoded.time).getTime())/1000;
+        if(diff > (parseInt(process.env.TOKEN_EXPIRE)/1000)/2 && diff < parseInt(process.env.TOKEN_EXPIRE)/1000) {
             let userId = decoded.user_id;
             let data = {
                 time: Date(),
                 user_id: userId,
             }
             const token = jwt.sign(data, jwtSecretKey, {
-                expiresIn: process.env.TOKEN_EXPIRE //86400=expires in 24 hours
+                expiresIn: process.env.TOKEN_EXPIRE
             });
             // expiresIn: "10h" // it will be expired after 10 hours
             //expiresIn: "20d" // it will be expired after 20 days
